@@ -1,0 +1,84 @@
+@import "variables";
+@import "helpers";
+
+.login__container {
+  @extend .center;
+
+  background: $background-color;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.login__wrapper {
+  @extend .center;
+
+  border-radius: 8px;
+  width: 400px;
+  height: 400px;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.login__heading {
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 1px;
+  line-height: 20px;
+  color: $font-color-black;
+}
+
+.login__paragraph {
+  margin-top: 10px;
+  color: $font-color-gray;
+  text-align: center;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__input {
+  width: 350px;
+  margin-bottom: 10px !important;
+
+  &:first-of-type {
+    margin-top: 15px;
+  }
+
+  &:last-of-type {
+    margin-bottom: 20px !important;
+  }
+}
+
+.login__button {
+  width: 350px;
+  background: $blue-accent-color !important;
+  color: $background-color !important;
+  border-radius: 8px !important;
+  transition: .3s;
+
+  &:hover {
+    background: $blue-accent-hover-color !important;
+  }
+}
+
+.login__error {
+  @extend .center;
+
+  width: 350px;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  color: $background-color !important;
+  background: $red-accent-color !important;
+
+   svg {
+     margin-right: 10px;
+   }
+}

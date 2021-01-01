@@ -1,12 +1,15 @@
-import {getLocalStorageRefreshToken, resetAuth, setLocalStorageAccessToken} from "./auth";
-import axios from "axios";
+import {
+  getLocalStorageRefreshToken,
+  resetAuth,
+  setLocalStorageAccessToken,
+} from './auth';
+import axios from 'axios';
 
-export const API_URL = 'http://wozniak-dev-api.herokuapp.com/api'
+export const API_URL = 'http://wozniak-dev-api.herokuapp.com/api';
 
-export const LOCAL_API_URL = 'http://127.0.0.1:8000/api'
+export const LOCAL_API_URL = 'http://127.0.0.1:8000/api';
 
 export const refreshToken = async () => {
-
   const refreshToken = getLocalStorageRefreshToken();
 
   if (refreshToken) {
@@ -17,31 +20,31 @@ export const refreshToken = async () => {
 
     if (tokenParts.exp > now) {
       try {
-        const { data } = await axios.post(`${LOCAL_API_URL}/user/token/refresh/`, {
-          refresh: refreshToken
-        })
-        setLocalStorageAccessToken(data.access)
+        const { data } = await axios.post(`${API_URL}/user/token/refresh/`, {
+          refresh: refreshToken,
+        });
+        setLocalStorageAccessToken(data.access);
       } catch (e) {
-        console.error(e)
+        console.error(e);
       }
     } else {
-      resetAuth()
+      resetAuth();
     }
   } else {
-    resetAuth()
+    resetAuth();
   }
-}
+};
 
 export const logoutToken = async () => {
   const refreshToken = getLocalStorageRefreshToken();
 
   if (refreshToken) {
     try {
-      await axios.post(`${LOCAL_API_URL}/user/logout/`, {
-        refresh_token: refreshToken
-      })
+      await axios.post(`${API_URL}/user/logout/`, {
+        refresh_token: refreshToken,
+      });
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   }
-}
+};
