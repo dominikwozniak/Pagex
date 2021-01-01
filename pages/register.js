@@ -8,6 +8,7 @@ import LogoutButton from '../components/logoutButton';
 import { Button, TextField } from '@material-ui/core';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const Register = () => {
   const [error, setError] = useState(false);
@@ -68,6 +69,10 @@ const Register = () => {
 
   return (
     <div className={styles.login__container}>
+      <Head>
+        <title>Register page</title>
+        <meta name="register page" content="register page" />
+      </Head>
       <div className={styles.login__wrapper}>
         <h3 className={styles.login__heading}>Sign up to XXX</h3>
         {error && (

@@ -5,7 +5,7 @@ import AuthContext from '../context/AuthContext';
 import LogoutButton from '../components/logoutButton';
 import { isLoggedIn } from '../utils/auth';
 
-import PrivateRoute from '../components/PrivateRoute';
+import PrivateRoute from '../routes/PrivateRoute';
 
 export default function Home() {
   const { user } = useContext(AuthContext);
@@ -15,17 +15,16 @@ export default function Home() {
       <div className={styles.container}>
         <Head>
           <title>Create Next App</title>
+          <meta name="home page" content="home page" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        {user ? (
+        {user && (
           <main className={styles.main}>
             Hello {user}
             <LogoutButton />
           </main>
-        ) : (
-          <main className={styles.main}>Access denies go to login</main>
         )}
-        {isLoggedIn() ? 'TAK' : 'NIE'}
+        <p>{isLoggedIn() ? 'TAK' : 'NIE'}</p>
       </div>
     </PrivateRoute>
   );

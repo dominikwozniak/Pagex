@@ -1,6 +1,7 @@
 import React from 'react';
 import {logout} from "../utils/auth";
 import {useRouter} from "next/router";
+import { Button } from "@material-ui/core"
 
 const LogoutButton = () => {
   const router = useRouter();
@@ -10,7 +11,7 @@ const LogoutButton = () => {
     router.push('/login')
   }
 
-  return <button onClick={handleLogout}>LOGOUT</button>
+  return <Button onClick={handleLogout}>LOGOUT</Button>
 };
 
 export default LogoutButton;
