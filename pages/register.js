@@ -18,10 +18,6 @@ const Register = () => {
   const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
-  const emailRef = useRef(null);
-  const firstNameRef = useRef(null);
-  const lastNameRef = useRef(null);
-  const passwordRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

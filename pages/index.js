@@ -1,31 +1,39 @@
-import { useContext } from 'react';
-import Head from 'next/head';
+import React from 'react';
 import styles from '../styles/Home.module.scss';
-import AuthContext from '../context/AuthContext';
-import LogoutButton from '../components/logoutButton';
+import { LOGO_WHITE_URL } from '../utils/helpers';
 import { isLoggedIn } from '../utils/auth';
+import ActionButton from '../components/actionButton';
+import Head from 'next/head';
 
-import PrivateRoute from '../routes/PrivateRoute';
-
-export default function Home() {
-  const { user } = useContext(AuthContext);
-
+const Index = () => {
   return (
-    <PrivateRoute>
-      <div className={styles.container}>
-        <Head>
-          <title>Create Next App</title>
-          <meta name="home page" content="home page" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        {user && (
-          <main className={styles.main}>
-            Hello {user}
-            <LogoutButton />
-          </main>
+    <div className={styles.home__container}>
+      <Head>
+        <title>PAGEX</title>
+        <meta name="home page" content="home page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className={styles.home__wrapper}>
+        <div className={styles.home__logoWrapper}>
+          <h3>Welcome in PAGEX</h3>
+          <img src={LOGO_WHITE_URL} alt="logo" className={styles.home__logo} />
+        </div>
+        <h5>PAGEX is a quick way to create your OWN landing page!</h5>
+        <p>Do you want to create your first website easily?</p>
+        <p>If so, PAGEX is definitely for you!</p>
+
+        {isLoggedIn() ? (
+          <ActionButton content="GO TO DASHBOARD" path="/dashboard" />
+        ) : (
+          <div className={styles.home__action}>
+              <ActionButton content="SIGN IN" path="/login" />
+              <p>or</p>
+              <ActionButton content="SIGN UP" path="/register" />
+          </div>
         )}
-        <p>{isLoggedIn() ? 'TAK' : 'NIE'}</p>
       </div>
-    </PrivateRoute>
+    </div>
   );
-}
+};
+
+export default Index;

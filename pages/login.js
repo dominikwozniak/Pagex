@@ -30,7 +30,7 @@ const Register = () => {
       setError(false);
       setAuth(email, data.access, data.refresh);
       setUser(email);
-      router.push('/');
+      router.push('/dashboard');
     } catch (e) {
       setError(true);
       console.error(e);
