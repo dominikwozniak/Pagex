@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import Head from 'next/head';
-import styles from '../styles/Home.module.scss';
+import styles from '../styles/Dashboard.module.scss';
 import AuthContext from '../context/AuthContext';
 import LogoutButton from '../components/logoutButton';
 import { isLoggedIn } from '../utils/auth';
@@ -12,14 +12,14 @@ export default function Home() {
 
   return (
     <PrivateRoute>
-      <div className={styles.container}>
+      <div className={styles.dashboard__container}>
         <Head>
-          <title>Create Next App</title>
+          <title>Dashboard | PAGEX</title>
           <meta name="home page" content="home page" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         {user && (
-          <main className={styles.main}>
+          <main className={styles.dashboard__wrapper}>
             Hello {user}
             <LogoutButton />
           </main>

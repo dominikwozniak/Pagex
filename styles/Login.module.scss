@@ -3,18 +3,20 @@
 
 .login__container {
   @extend .center;
+  @extend .background-gradient;
 
-  background: $background-color;
   width: 100%;
   min-height: 100vh;
 }
 
 .login__wrapper {
   @extend .center;
+  @extend .box-shadow;
 
-  border-radius: 8px;
+  border-radius: 12px;
   width: 400px;
   height: 400px;
+  background: $background-color;
   flex-direction: column;
   margin-bottom: 20px;
 }

@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'helpers';
+
+.dashboard__container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.dashboard__wrapper {
+  @extend .center;
+
+  width: 100%;
+  height: 100vh;
+}

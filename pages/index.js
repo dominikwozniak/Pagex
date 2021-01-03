@@ -23,12 +23,14 @@ const Index = () => {
         <p>If so, PAGEX is definitely for you!</p>
 
         {isLoggedIn() ? (
-          <ActionButton content="GO TO DASHBOARD" path="/dashboard" />
+          <div className={styles.home__action}>
+            <ActionButton content="GO TO DASHBOARD" path="/dashboard" />
+          </div>
         ) : (
           <div className={styles.home__action}>
-              <ActionButton content="SIGN IN" path="/login" />
-              <p>or</p>
-              <ActionButton content="SIGN UP" path="/register" />
+            <ActionButton content="SIGN IN" path="/login" />
+            <p>or</p>
+            <ActionButton content="SIGN UP" path="/register" />
           </div>
         )}
       </div>

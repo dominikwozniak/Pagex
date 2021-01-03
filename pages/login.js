@@ -23,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const { data } = await axios.post(`${API_URL}/user/token/`, {
+      const { data } = await axios.post(`${LOCAL_API_URL}/user/token/`, {
         email: email,
         password: password,
       });
@@ -62,7 +62,7 @@ const Register = () => {
         <meta name="login page" content="login page" />
       </Head>
       <div className={styles.login__wrapper}>
-        <h3 className={styles.login__heading}>Sign in to XXX</h3>
+        <h3 className={styles.login__heading}>Sign in to PAGEX</h3>
         {error && (
           <div className={styles.login__error}>
             <ErrorOutlineIcon />

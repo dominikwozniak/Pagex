@@ -18,12 +18,12 @@ export const setLocalStorageEmail = (email) =>
 
 export const getLocalStorageToken = () =>
   isBrowser() && window.localStorage.getItem('access_token')
-    ? window.localStorage.getItem('access_token').replace('\"', '')
+    ? window.localStorage.getItem('access_token').replace('"', '').replace('"', '')
     : '';
 
 export const getLocalStorageRefreshToken = () =>
   isBrowser() && window.localStorage.getItem('refresh_token')
-    ? window.localStorage.getItem('refresh_token').replace('\"', '')
+    ? window.localStorage.getItem('refresh_token').replace('"', '').replace('"', '')
     : '';
 
 export const getLocalStorageEmail = () =>
