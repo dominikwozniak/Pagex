@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from '../styles/PrivateRoute.module.scss';
 import { isLoggedIn } from '../utils/auth';
 import Router from 'next/router';
-import Navbar from '../components/navbar';
+import Navbar from '../components/navbar/navbar';
 import { CircularProgress } from '@material-ui/core';
 
 const PrivateRoute = ({ children }) => {

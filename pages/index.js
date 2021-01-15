@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/Home.module.scss';
 import { LOGO_WHITE_URL } from '../utils/helpers';
 import { isLoggedIn } from '../utils/auth';
-import ActionButton from '../components/actionButton';
+import ActionButton from '../components/actionButton/actionButton';
 import Head from 'next/head';
 
 const Index = () => {

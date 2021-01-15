@@ -1,5 +1,5 @@
 import React from 'react';
-import { logout } from '../utils/auth';
+import { logout } from '../../utils/auth';
 import { useRouter } from 'next/router';
 import { Button } from '@material-ui/core';
 

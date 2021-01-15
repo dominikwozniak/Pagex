@@ -1,4 +1,5 @@
-import { logoutToken } from './helpers';
+import { API_URL } from './helpers';
+import axios from 'axios';
 
 export const isBrowser = () => typeof window !== 'undefined';
 
@@ -55,4 +56,45 @@ export const resetAuth = () => {
 export const logout = () => {
   logoutToken();
   resetAuth();
+};
+
+export const logoutToken = async () => {
+  const refreshToken = getLocalStorageRefreshToken();
+
+  if (refreshToken) {
+    try {
+      await axios.post(`${API_URL}/user/logout/`, {
+        refresh_token: refreshToken,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+};
+
+export const refreshToken = async () => {
+  const refreshToken = getLocalStorageRefreshToken().replace('\"', '');
+
+  if (refreshToken) {
+    const tokenParts = JSON.parse(atob(refreshToken.split('.')[1]));
+
+    // exp date in token is expressed in seconds, while now() returns milliseconds:
+    const now = Math.ceil(Date.now() / 1000);
+
+    if (tokenParts.exp > now) {
+      try {
+        console.log(refreshToken, "<<< TOKEN");
+        const { data } = await axios.post(`${API_URL}/user/token/refresh/`, {
+          refresh: refreshToken,
+        });
+        setLocalStorageAccessToken(data.access);
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      resetAuth();
+    }
+  } else {
+    resetAuth();
+  }
 };

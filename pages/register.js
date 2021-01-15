@@ -4,7 +4,7 @@ import axios from 'axios';
 import { API_URL, LOCAL_API_URL } from '../utils/helpers';
 import { useRouter } from 'next/router';
 import { isLoggedIn } from '../utils/auth';
-import LogoutButton from '../components/logoutButton';
+import LogoutButton from '../components/logoutButton/logoutButton';
 import { Button, TextField } from '@material-ui/core';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await axios.post(`${LOCAL_API_URL}/user/register/`, {
+      const res = await axios.post(`${API_URL}/user/register/`, {
         email: email,
         first_name: firstName,
         last_name: lastName,

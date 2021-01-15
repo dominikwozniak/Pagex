@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Dashboard.module.scss';
 import AuthContext from '../context/AuthContext';
-import LogoutButton from '../components/logoutButton';
+import LogoutButton from '../components/logoutButton/logoutButton';
 import { isLoggedIn } from '../utils/auth';
 
 import PrivateRoute from '../routes/PrivateRoute';

@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { getLocalStorageEmail } from "../utils/auth";
-import {refreshToken} from "../utils/helpers";
+import { getLocalStorageEmail, refreshToken } from "../utils/auth";
 
 const AuthContext = createContext();
 

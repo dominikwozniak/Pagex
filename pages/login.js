@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import AuthContext from '../context/AuthContext';
 import { isLoggedIn, setAuth } from '../utils/auth';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
-import LogoutButton from '../components/logoutButton';
+import LogoutButton from '../components/logoutButton/logoutButton';
 import { Button, TextField } from '@material-ui/core';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -23,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const { data } = await axios.post(`${LOCAL_API_URL}/user/token/`, {
+      const { data } = await axios.post(`${API_URL}/user/token/`, {
         email: email,
         password: password,
       });
