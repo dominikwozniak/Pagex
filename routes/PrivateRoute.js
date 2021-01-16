@@ -21,7 +21,7 @@ const PrivateRoute = ({ children }) => {
   } else {
     return (
       <>
-        <Navbar />
+        {/*<Navbar />*/}
         {children}
       </>
     );

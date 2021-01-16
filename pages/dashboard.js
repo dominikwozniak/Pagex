@@ -2,13 +2,23 @@ import React, { useContext } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Dashboard.module.scss';
 import AuthContext from '../context/AuthContext';
+import Avatar from '@material-ui/core/Avatar';
+import styled from 'styled-components';
+import AccordionPanel from '../components/accordionPanel/accordionPanel';
 import LogoutButton from '../components/logoutButton/logoutButton';
 import { isLoggedIn } from '../utils/auth';
 
 import PrivateRoute from '../routes/PrivateRoute';
 
-export default function Home() {
-  const { user } = useContext(AuthContext);
+const StyledAvatar = styled(Avatar)`
+  .MuiAvatar-root {
+    width: 60px;
+    height: 60px;
+  }
+`;
+
+export default function Dashboard() {
+  const { user, userInfo } = useContext(AuthContext);
 
   return (
     <PrivateRoute>
@@ -18,13 +28,19 @@ export default function Home() {
           <meta name="home page" content="home page" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        {user && (
-          <main className={styles.dashboard__wrapper}>
-            Hello {user}
-            <LogoutButton />
-          </main>
+        {user && userInfo && (
+          <div className={styles.dashboard__wrapper}>
+            <div className={styles.dashboard__companyCard}>
+              <StyledAvatar>{ user[1].toUpperCase() }</StyledAvatar>
+              <p>{userInfo.email}</p>
+              <p>Created at: {userInfo.date_joined}</p>
+            </div>
+            <div className={styles.dashboard__optionsCard}>
+              <AccordionPanel />
+            </div>
+            {/*<LogoutButton />*/}
+          </div>
         )}
-        <p>{isLoggedIn() ? 'TAK' : 'NIE'}</p>
       </div>
     </PrivateRoute>
   );
