@@ -7,9 +7,6 @@ import styled from 'styled-components';
 import AccordionPanel from '../components/accordionPanel/accordionPanel';
 import LogoutButton from '../components/logoutButton/logoutButton';
 
-import Avatar from '@material-ui/core/Avatar';
-import styled from 'styled-components';
-
 import { isLoggedIn } from '../utils/auth';
 
 import PrivateRoute from '../routes/PrivateRoute';
