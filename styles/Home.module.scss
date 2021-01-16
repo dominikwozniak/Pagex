@@ -18,13 +18,50 @@
   p {
     color: $background-color;
     font-weight: 300;
-    font-size: 16px;
+    font-size: 18px;
+
+    margin-top: 10px;
   }
 
   h5 {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 300;
     color: $background-color;
+  }
+
+  h3 {
+    font-size: 40px;
+    font-weight: 300;
+    color: $background-color;
+
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.card__wrapper {
+  @extend .center;
+
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  h5 {
+    color: $font-color-gray;
+    font-weight: bold;
+    font-size: 22px;
+
+    margin-top: 10px;
+  }
+
+  p {
+    color: $font-color-gray;
+    font-weight: 300;
+    font-size: 18px;
+
+    margin-top: 10px;
   }
 }
 
@@ -45,6 +82,10 @@
 
 .home__action {
   @extend .align-row;
+
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 
   display: flex;
   margin-top: 10px;

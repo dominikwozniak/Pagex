@@ -1,0 +1,34 @@
+@import 'variables';
+
+.logoutButton {
+    background-color: $pink-accent-color !important;
+    color: #fff !important;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 7px 14px !important;
+    font-weight: bold !important;
+  }
+.logoutButton:hover {
+    background-color: #5469d4 !important;
+  }
+
+.actionButton {
+    display: block;
+    background-color: #ffffff !important;
+    color: $blue-accent-color !important;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 10px 25px !important;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    border-radius: 0.7em;
+    box-sizing: border-box;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 18px !important;
+    font-weight: bold !important;
+  }
+.actionButton:hover {
+    color: rgba(79, 70, 229, 1) !important;
+    background-color: #ffffff !important;
+  }
+;
