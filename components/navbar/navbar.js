@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from '../../styles/navbar.module.scss';
 import LogoutButton from '../logoutButton/logoutButton';
 import Link from 'next/link';
+import AuthContext from '../../context/AuthContext'
+
+import { isLoggedIn } from '../../utils/auth';
 
 const Navbar = () => {
+
+const {user} = useContext(AuthContext)
+
   return (
     <nav className={styles.navbar__wrapper}>
       <Link href="/">
@@ -18,7 +24,7 @@ const Navbar = () => {
         </a>
       </Link>
       <div>
-        <LogoutButton />
+      {user && <LogoutButton/>}
       </div>
     </nav>
   );

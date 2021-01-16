@@ -11,6 +11,8 @@ import { Button, TextField } from '@material-ui/core';
 import Link from 'next/link';
 import Head from 'next/head';
 
+import { toast } from 'react-toastify';
+
 const Register = () => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +22,16 @@ const Register = () => {
   const router = useRouter();
 
   const handleSubmit = async (e) => {
+    const notifySuccess = () => {
+      toast.success("Logged succesfuly", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    };
+    const notifyError = () => {
+      toast.error("Failed to loggin", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    };
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -31,9 +43,11 @@ const Register = () => {
       setAuth(email, data.access, data.refresh);
       setUser(email);
       router.push('/dashboard');
+      notifySuccess();
     } catch (e) {
       setError(true);
       console.error(e);
+      notifyError();
     }
     setIsLoading(false);
   };
@@ -49,7 +63,7 @@ const Register = () => {
   if (isLoggedIn()) {
     return (
       <div>
-        Jesteś już zalogowany! Aby się wylogować nacisnij
+        You are already log in! If you want to log out press
         <LogoutButton />
       </div>
     );
@@ -66,7 +80,7 @@ const Register = () => {
         {error && (
           <div className={styles.login__error}>
             <ErrorOutlineIcon />
-            Wystąpił błąd!
+            An error occurred!
           </div>
         )}
         <form onSubmit={handleSubmit} className={styles.login__form}>
