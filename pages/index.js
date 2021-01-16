@@ -27,19 +27,14 @@ const Index = () => {
           <h5>PAGEX is a quick way to create your OWN landing page!</h5>
           <p>Do you want to create first website for your company easily?</p>
           <p>If so, PAGEX is definitely for you!</p>
-        </div>
 
-        <div>
-        {isLoggedIn() ? (
+          {isLoggedIn() ? (
           <div className={styles.home__action}>
             <ActionButton content="GO TO DASHBOARD" path="/dashboard" />
           </div>
         ) : (
           <div className={styles.home__action}>
             <ActionButton content="Start NOW" path="register"/>
-            {/* <ActionButton content="SIGN IN" path="/login" />
-            <p>or</p>
-            <ActionButton content="SIGN UP" path="/register" /> */}
           </div>
         )}
         </div>

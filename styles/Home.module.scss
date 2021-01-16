@@ -81,7 +81,7 @@
 }
 
 .home__action {
-  @extend .align-row;
+  @extend .center;
 
   flex-direction: column;
   height: 100%;
