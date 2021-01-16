@@ -97,7 +97,7 @@ const AccordionPanel = () => {
     setIsLoading(true);
     const accessToken = getLocalStorageToken();
 
-    if (accessToken) {
+    if (accessToken && userInfo) {
       try {
         const { data } = await axios.get(`${API_URL}/pages/`, {
           headers: {
@@ -105,15 +105,18 @@ const AccordionPanel = () => {
             'Content-type': 'Application/json',
           },
         });
+        console.log(data.contact_email, '<<< CONTACT');
+        console.log(userInfo.email, '<<< USER INFO');
 
         if (data.contact_email) {
           setEmail(data.contact_email);
         } else {
-          setEmail(userInfo.email)
+          setEmail(userInfo.email);
         }
 
         setName(data.name);
         setPageType(data.page_type);
+
         setHeaderTitle(data.header_title);
         setHeaderDescription(data.header_description);
         setSeviceFirstName(data.services_1_title);
@@ -131,7 +134,13 @@ const AccordionPanel = () => {
         setIsLoading(true);
       }
     }
-  }, []);
+  }, [userInfo]);
+
+  useEffect(() => {
+    if (email) {
+        setEmail(userInfo.email);
+    }
+  }, [setEmail]);
 
   const handleSelectChange = (event) => {
     setPageType(event.target.value);
@@ -211,26 +220,30 @@ const AccordionPanel = () => {
                 In this section you can change main information about your page.
               </Typography>
               <div>
-                <TextField
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className={styles.accordionPanel__input}
-                  label="website name"
-                  name="web-name"
-                  id="web-name"
-                  placeholder="Name"
-                />
-                <TextField
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={styles.accordionPanel__input}
-                  label="website name"
-                  name="web-name"
-                  id="web-name"
-                  placeholder="Name"
-                />
+                <div>
+                  <TextField
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className={styles.accordionPanel__input}
+                    label="website name"
+                    name="web-name"
+                    id="web-name"
+                    placeholder="Name"
+                  />
+                </div>
+                <div>
+                  <TextField
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={styles.accordionPanel__input}
+                    label="company email"
+                    name="web-name"
+                    id="web-name"
+                    placeholder="Name"
+                  />
+                </div>
                 <InputLabel id="demo-controlled-open-select-label">
                   Page type
                 </InputLabel>
