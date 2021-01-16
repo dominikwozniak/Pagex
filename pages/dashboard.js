@@ -6,11 +6,8 @@ import Avatar from '@material-ui/core/Avatar';
 import styled from 'styled-components';
 import AccordionPanel from '../components/accordionPanel/accordionPanel';
 import LogoutButton from '../components/logoutButton/logoutButton';
-
 import { isLoggedIn } from '../utils/auth';
-
 import PrivateRoute from '../routes/PrivateRoute';
-
 import { toast } from 'react-toastify';
 
   const StyledAvatar = styled(Avatar)`
@@ -52,9 +49,8 @@ export default function Dashboard() {
             <div className={styles.dashboard__optionsCard}>
               <AccordionPanel />
             </div>
-
             <div>
-            {notify}
+              {notify}
             </div>
           </div>
         )}
