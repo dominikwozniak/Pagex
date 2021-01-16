@@ -1,7 +1,10 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Dashboard.module.scss';
 import AuthContext from '../context/AuthContext';
+import Avatar from '@material-ui/core/Avatar';
+import styled from 'styled-components';
+import AccordionPanel from '../components/accordionPanel/accordionPanel';
 import LogoutButton from '../components/logoutButton/logoutButton';
 
 import Avatar from '@material-ui/core/Avatar';
@@ -13,11 +16,17 @@ import PrivateRoute from '../routes/PrivateRoute';
 
 import { toast } from 'react-toastify';
 
+  const StyledAvatar = styled(Avatar)`
+  .MuiAvatar-root {
+    width: 60px;
+    height: 60px;
+  }
+`;
+
 export default function Dashboard() {
   const { user, userInfo } = useContext(AuthContext);
   const notify = () => {
     toast("Loggin Notification !");
-
     toast.success("Logged succesfuly", {
       position: toast.POSITION.TOP_CENTER
     });
@@ -26,6 +35,7 @@ export default function Dashboard() {
       position: toast.POSITION.TOP_LEFT
     });
   };
+  
   return (
     <PrivateRoute>
       <div className={styles.dashboard__container}>
@@ -45,14 +55,12 @@ export default function Dashboard() {
             <div className={styles.dashboard__optionsCard}>
               <AccordionPanel />
             </div>
+
             <div>
             {notify}
             </div>
-            {/*<LogoutButton />*/}
           </div>
-
         )}
-        <p>{isLoggedIn() ? 'TAK' : 'NIE'}</p>
       </div>
     </PrivateRoute>
   )

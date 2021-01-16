@@ -63,7 +63,7 @@ const Register = () => {
   if (isLoggedIn()) {
     return (
       <div>
-        Jesteś już zalogowany! Aby się wylogować nacisnij
+        You are already log in! If you want to log out press
         <LogoutButton />
       </div>
     );
@@ -80,7 +80,7 @@ const Register = () => {
         {error && (
           <div className={styles.login__error}>
             <ErrorOutlineIcon />
-            Wystąpił błąd!
+            An error occurred!
           </div>
         )}
         <form onSubmit={handleSubmit} className={styles.login__form}>
