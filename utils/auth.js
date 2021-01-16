@@ -19,12 +19,18 @@ export const setLocalStorageEmail = (email) =>
 
 export const getLocalStorageToken = () =>
   isBrowser() && window.localStorage.getItem('access_token')
-    ? window.localStorage.getItem('access_token').replace('"', '').replace('"', '')
+    ? window.localStorage
+        .getItem('access_token')
+        .replace('"', '')
+        .replace('"', '')
     : '';
 
 export const getLocalStorageRefreshToken = () =>
   isBrowser() && window.localStorage.getItem('refresh_token')
-    ? window.localStorage.getItem('refresh_token').replace('"', '').replace('"', '')
+    ? window.localStorage
+        .getItem('refresh_token')
+        .replace('"', '')
+        .replace('"', '')
     : '';
 
 export const getLocalStorageEmail = () =>
@@ -73,7 +79,7 @@ export const logoutToken = async () => {
 };
 
 export const refreshToken = async () => {
-  const refreshToken = getLocalStorageRefreshToken().replace('\"', '');
+  const refreshToken = getLocalStorageRefreshToken().replace('"', '');
 
   if (refreshToken) {
     const tokenParts = JSON.parse(atob(refreshToken.split('.')[1]));
@@ -83,7 +89,7 @@ export const refreshToken = async () => {
 
     if (tokenParts.exp > now) {
       try {
-        console.log(refreshToken, "<<< TOKEN");
+        console.log(refreshToken, '<<< TOKEN');
         const { data } = await axios.post(`${API_URL}/user/token/refresh/`, {
           refresh: refreshToken,
         });

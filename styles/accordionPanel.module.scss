@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'helpers';
+
+.accordionPanel__detailsWrapper {
+  @extend .center;
+
+  width: 100%;
+}
+
+.accordionPanel__input {
+  width: 200px;
+  margin-bottom: 12px !important;
+}

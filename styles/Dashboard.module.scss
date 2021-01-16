@@ -8,7 +8,26 @@
 
 .dashboard__wrapper {
   @extend .center;
+  @extend .background-gradient;
 
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.dashboard__companyCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 100vh;
+  //flex-basis: max-content;
+  padding: 2rem;
+  background-color: $background-color;
+}
+
+.dashboard__optionsCard {
   width: 100%;
   height: 100vh;
 }
