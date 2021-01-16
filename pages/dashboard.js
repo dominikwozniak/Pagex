@@ -38,7 +38,6 @@ export default function Dashboard() {
             <div className={styles.dashboard__optionsCard}>
               <AccordionPanel />
             </div>
-            {/*<LogoutButton />*/}
           </div>
         )}
       </div>
