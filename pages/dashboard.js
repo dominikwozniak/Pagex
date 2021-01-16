@@ -5,6 +5,7 @@ import AuthContext from '../context/AuthContext';
 import Avatar from '@material-ui/core/Avatar';
 import styled from 'styled-components';
 import AccordionPanel from '../components/accordionPanel/accordionPanel';
+import StatsPanel from '../components/statsPanel/statsPanel';
 import LogoutButton from '../components/logoutButton/logoutButton';
 import { isLoggedIn } from '../utils/auth';
 import PrivateRoute from '../routes/PrivateRoute';
@@ -29,7 +30,7 @@ export default function Dashboard() {
       position: toast.POSITION.TOP_LEFT
     });
   };
-  
+
   return (
     <PrivateRoute>
       <div className={styles.dashboard__container}>
@@ -47,6 +48,7 @@ export default function Dashboard() {
               <p>Created at: {userInfo.date_joined}</p>
             </div>
             <div className={styles.dashboard__optionsCard}>
+              <StatsPanel />
               <AccordionPanel />
             </div>
             <div>
