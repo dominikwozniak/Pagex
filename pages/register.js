@@ -95,6 +95,7 @@ const Register = () => {
           email: email,
           first_name: firstName,
           last_name: lastName,
+          company_name: companyName,
           password: password,
         });
         setRegisterError(false);
