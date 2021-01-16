@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Dashboard.module.scss';
 import AuthContext from '../context/AuthContext';
