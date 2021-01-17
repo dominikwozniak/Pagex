@@ -26,6 +26,8 @@ import SaveIcon from '@material-ui/icons/Save';
 import axios from 'axios';
 import { API_URL } from '../utils/helpers';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import Link from 'next/link';
 
 const StyledAvatar = styled(Avatar)`
   margin-top: 25%;
@@ -68,6 +70,11 @@ bottom: 10px;
 left: 10px;
 cursor: pointer;
 `;
+const Analytics = styled.div`
+position: absolute;
+right: 0;
+bottom: 0;
+`
 export default function Dashboard() {
   const { user, userInfo } = useContext(AuthContext);
   const notify = () => {
@@ -93,6 +100,7 @@ export default function Dashboard() {
   const [emailEdit, setEmailEdit] = useState('');
   const [addressEdit, setAddressEdit] = useState('');
   const [phoneEdit, setPhoneEdit] = useState('');
+  const [slug, setSlug] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -200,7 +208,7 @@ export default function Dashboard() {
                   <DataParagraph>{email}</DataParagraph>
                 </Center>
                 <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
-                  <DialogTitle>Edit your profile</DialogTitle>
+                  <DialogTitle style={{textAlign: "center"}}>EDIT YOUR PROFILE</DialogTitle>
                   <DialogContent>
                     <form>
                       <TextField name="firstName" type="text" label="First name" rows="1"
@@ -243,6 +251,13 @@ export default function Dashboard() {
                     <ExitToAppIcon size="lg" />
                   </IconButton>
                 </LogOutDiv>
+              </Tooltip>
+              <Tooltip title="Analytics" placement="top">
+                <Analytics>
+                  <IconButton>
+                    <EqualizerIcon size="20px" />
+                  </IconButton>
+                </Analytics>
               </Tooltip>
             </div>
             <div className={styles.dashboard__optionsCard}>
