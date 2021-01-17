@@ -26,8 +26,6 @@ const Register = () => {
   const [passwordLengthError, setPasswordLengthError] = useState({});
   const [confirmPasswordError, setConfirmPasswordError] = useState({});
   const router = useRouter();
-  {console.log(password)}
-  {console.log(confirmPassword)}
 
   const formValidation = () => {
     const emailError = {};
