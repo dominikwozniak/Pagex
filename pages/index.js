@@ -57,6 +57,13 @@ const Index = () => {
             <p style={{fontSize: '18px', fontWeight: 200}}>All services are available immediately to each user</p>
           </div>
         </div>
+        {isLoggedIn() ? (
+          <div></div>
+        ) : (
+          <div className={styles.home__action} style={{marginBottom: '4em'}}>
+            <ActionButton content="Try it yourself" path="register"/>
+          </div>
+        )}
       </div>
       <div className={styles.services__wrapper}>
         <h3>Our services</h3>
@@ -104,6 +111,13 @@ const Index = () => {
               Update your website from anywhere with mobile and desktop apps
             </p>
           </div>
+          {isLoggedIn() ? (
+            <div></div>
+          ) : (
+            <div className={styles.home__action} style={{marginBottom: '4em'}}>
+              <ActionButton content="Join us now" path="register"/>
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.footer__wrapper}>
