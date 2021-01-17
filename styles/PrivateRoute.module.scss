@@ -6,11 +6,16 @@
 
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: auto;
 }
 
 .route__loading {
   circle {
     color: $font-color-black;
   }
+}
+
+.route {
+  width: 100%;
+  height: auto;
 }

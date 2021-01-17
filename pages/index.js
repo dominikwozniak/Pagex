@@ -45,14 +45,17 @@ const Index = () => {
         <p style={{fontSize: '22px', textAlign: 'center', color: '#292928'}}>Save time and create a website for your company now</p>
         <div className={styles.about__cards}>
           <div className={styles.about__card}>
+            <img style={{height: '100px', marginBottom: '.5em'}} src="https://django-focus.s3.eu-central-1.amazonaws.com/assets/undraw_mobile_web_2g8b.svg" />
             <h2>Less work for you</h2>
             <p style={{fontSize: '18px', fontWeight: 200}}>We combine all your requirements to present and develop your company</p>
           </div>
           <div className={styles.about__card}>
+            <img style={{height: '100px', marginBottom: '.5em'}} src="https://django-focus.s3.eu-central-1.amazonaws.com/assets/undraw_Devices_re_dxae.svg" />
             <h2>Super flexible</h2>
             <p style={{fontSize: '18px', fontWeight: 200}}>We support various types of businesses and access to data analysis</p>
           </div>
           <div className={styles.about__card}>
+            <img style={{height: '100px', marginBottom: '.5em'}} src="https://django-focus.s3.eu-central-1.amazonaws.com/assets/undraw_Savings_re_eq4w.svg" />
             <h2>Everyone saves</h2>
             <p style={{fontSize: '18px', fontWeight: 200}}>All services are available immediately to each user</p>
           </div>
