@@ -26,6 +26,8 @@ import SaveIcon from '@material-ui/icons/Save';
 import axios from 'axios';
 import { API_URL } from '../utils/helpers';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import Link from 'next/link';
 
 const StyledAvatar = styled(Avatar)`
   margin-top: 25%;
@@ -36,38 +38,41 @@ const StyledAvatar = styled(Avatar)`
 `;
 
 const ProfileDetails = styled.div`
-position: relative;
-padding: 7% 19%;
-text-align: left;
-width: 50vh;
-height: 50vh;
-
-
+  position: relative;
+  padding: 7% 19%;
+  text-align: left;
+  width: 50vh;
+  height: 50vh;
 `;
 const DataParagraph = styled.p`
-margin: 8%;
-font-size: 28px;
-&:nth-child(2){
-font-size: 24px;
-}
+  margin: 8%;
+  font-size: 28px;
+  &:nth-child(2) {
+    font-size: 24px;
+  }
 `;
 const Center = styled.div`
-text-align: center;
+  text-align: center;
 `;
 const LogOutDiv = styled.div`
-position: absolute;
-left: 10px;
-top: 10px;
-width: 40px;
-height: 40px;
-cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 `;
 const EditDiv = styled.div`
-position: absolute;
-bottom: 10px;
-left: 10px;
-cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
 `;
+const Analytics = styled.div`
+position: absolute;
+right: 0;
+bottom: 0;
+`
 export default function Dashboard() {
   const { user, userInfo } = useContext(AuthContext);
   const notify = () => {
@@ -93,6 +98,7 @@ export default function Dashboard() {
   const [emailEdit, setEmailEdit] = useState('');
   const [addressEdit, setAddressEdit] = useState('');
   const [phoneEdit, setPhoneEdit] = useState('');
+  const [slug, setSlug] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -115,7 +121,6 @@ export default function Dashboard() {
     logout();
     router.push('/');
   };
-
 
   const handleClose = () => {
     setOpen(false);
@@ -193,40 +198,98 @@ export default function Dashboard() {
         {user && userInfo && (
           <div className={styles.dashboard__wrapper}>
             <div className={styles.dashboard__companyCard}>
-              <StyledAvatar style={{ height: '120px', width: '120px' }}>{user[1].toUpperCase()} </StyledAvatar>
+              <StyledAvatar style={{ height: '120px', width: '120px' }}>
+                {email && email[0].toUpperCase()}{' '}
+              </StyledAvatar>
               <ProfileDetails>
                 <Center>
-                  <DataParagraph>{firstName} {lastName}</DataParagraph>
+                  <DataParagraph>
+                    {firstName} {lastName}
+                  </DataParagraph>
                   <DataParagraph>{email}</DataParagraph>
                 </Center>
                 <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
-                  <DialogTitle>Edit your profile</DialogTitle>
+                  <DialogTitle style={{textAlign: "center"}}>EDIT YOUR PROFILE</DialogTitle>
                   <DialogContent>
                     <form>
-                      <TextField name="firstName" type="text" label="First name" rows="1"
-                                 placeholder="First name" value={firstNameEdit} onChange={onFirstNameChangeEdit}
-                                 fullWidth />
-                      <TextField name="lastName" type="text" label="Last name" rows="1"
-                                 placeholder="Last name" value={lastNameEdit} onChange={onLastNameChangeEdit}
-                                 fullWidth />
-                      <TextField name="email" type="email" label="Email" rows="1"
-                                 placeholder="Email" value={emailEdit} onChange={onEmailChangeEdit}
-                                 fullWidth />
-                      <TextField name="company" type="text" label="Company name" rows="1"
-                                 placeholder="Company name" value={companyEdit} onChange={onCompanyChangeEdit}
-                                 fullWidth />
-                      <TextField name="Address" type="text" label="Address" rows="3"
-                                 placeholder="Address" value={addressEdit} onChange={onAddressChangeEdit}
-                                 fullWidth />
-                      <TextField name="Phone" type="number" label="Phone" rows="1"
-                                 placeholder="Phone" value={phoneEdit} onChange={onPhoneChangeEdit}
-                                 fullWidth />
+                      <TextField
+                        name="firstName"
+                        type="text"
+                        label="First name"
+                        rows="1"
+                        placeholder="First name"
+                        value={firstNameEdit}
+                        onChange={onFirstNameChangeEdit}
+                        fullWidth
+                      />
+                      <TextField
+                        name="lastName"
+                        type="text"
+                        label="Last name"
+                        rows="1"
+                        placeholder="Last name"
+                        value={lastNameEdit}
+                        onChange={onLastNameChangeEdit}
+                        fullWidth
+                      />
+                      <TextField
+                        name="email"
+                        type="email"
+                        label="Email"
+                        rows="1"
+                        placeholder="Email"
+                        value={emailEdit}
+                        onChange={onEmailChangeEdit}
+                        fullWidth
+                      />
+                      <TextField
+                        name="company"
+                        type="text"
+                        label="Company name"
+                        rows="1"
+                        placeholder="Company name"
+                        value={companyEdit}
+                        onChange={onCompanyChangeEdit}
+                        fullWidth
+                      />
+                      <TextField
+                        name="Address"
+                        type="text"
+                        label="Address"
+                        rows="3"
+                        placeholder="Address"
+                        value={addressEdit}
+                        onChange={onAddressChangeEdit}
+                        fullWidth
+                      />
+                      <TextField
+                        name="Phone"
+                        type="number"
+                        label="Phone"
+                        rows="1"
+                        placeholder="Phone"
+                        value={phoneEdit}
+                        onChange={onPhoneChangeEdit}
+                        fullWidth
+                      />
                     </form>
                   </DialogContent>
                   <DialogActions>
-                    <Button onClick={handleClose} variant="contained" color="primary">Close</Button>
-                    <Button onClick={handleSubmit} variant="contained" color="secondary" startIcon={<SaveIcon />}>Save
-                      changes</Button>
+                    <Button
+                      onClick={handleClose}
+                      variant="contained"
+                      color="primary"
+                    >
+                      Close
+                    </Button>
+                    <Button
+                      onClick={handleSubmit}
+                      variant="contained"
+                      color="secondary"
+                      startIcon={<SaveIcon />}
+                    >
+                      Save changes
+                    </Button>
                   </DialogActions>
                 </Dialog>
               </ProfileDetails>
@@ -244,14 +307,19 @@ export default function Dashboard() {
                   </IconButton>
                 </LogOutDiv>
               </Tooltip>
+              <Tooltip title="Analytics" placement="top">
+                <Analytics>
+                  <IconButton>
+                    <EqualizerIcon size="20px" />
+                  </IconButton>
+                </Analytics>
+              </Tooltip>
             </div>
             <div className={styles.dashboard__optionsCard}>
               <StatsPanel />
               <AccordionPanel />
             </div>
-            <div>
-              {notify}
-            </div>
+            <div>{notify}</div>
           </div>
         )}
       </div>
