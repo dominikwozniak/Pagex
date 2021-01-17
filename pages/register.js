@@ -66,10 +66,6 @@ const Register = () => {
       isValidForm = false;
       emailError.emailNotValid = "Please enter valid email address!";
     }
-    if(password.trim().length > 8){
-      passwordLengthError.passwordShort = "Password must be 8 characters long!"
-      isValidForm = false;
-    }
     if(password !== confirmPassword){
       confirmPasswordError.passwordNotTheSame = "Passwords are not the same!"
       isValidForm = false;
