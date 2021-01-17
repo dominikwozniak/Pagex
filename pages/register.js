@@ -26,8 +26,6 @@ const Register = () => {
   const [passwordLengthError, setPasswordLengthError] = useState({});
   const [confirmPasswordError, setConfirmPasswordError] = useState({});
   const router = useRouter();
-  {console.log(password)}
-  {console.log(confirmPassword)}
 
   const formValidation = () => {
     const emailError = {};
@@ -95,6 +93,7 @@ const Register = () => {
           email: email,
           first_name: firstName,
           last_name: lastName,
+          company_name: companyName,
           password: password,
         });
         setRegisterError(false);
