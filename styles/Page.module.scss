@@ -26,13 +26,26 @@
     font-size: 1.5rem;
     font-weight: 300;
   }
+
+  img {
+    //@extend .box-shadow;
+
+    width: 450px;
+    height: 450px;
+    border-radius: .5rem;
+  }
 }
 
 .page__header__button {
   background-color: $blue-accent-hover-color !important;
   color: #fff !important;
   margin-top: 2rem !important;
-  padding: .5rem !important;
+  padding: .5rem 1rem !important;
+}
+
+.page__services {
+  height: 100vh;
+  width: 100%;
 }
 
 .page__about {
@@ -40,7 +53,78 @@
   width: 100%;
 }
 
-.page__service {
-  height: 100vh;
+.about__wrapper {
+  @extend .center;
+  @extend .background-gradient;
+
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
   width: 100%;
+  padding: 0 2em;
+
+  h3 {
+    font-size: 40px;
+    font-weight: 300;
+    color: $background-color;
+
+    margin: 10% 10px 20px;
+  }
+
+  p {
+    color: $background-color !important;
+  }
+}
+
+.about__cards {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  p {
+    text-align: center;
+    font-size: 18px;
+    color: $background-color;
+  }
+}
+
+.about__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+
+  padding: 1em 1em;
+  margin: 1em 3em;
+  max-width: 300px;
+
+  h2 {
+    font-size: 26px;
+    font-weight: normal;
+    color: $background-color;
+    position: relative;
+  }
+  h2:after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    bottom: -6px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 70%;
+    background: $background-color;
+  }
+  p {
+    text-align: center;
+    margin-top: 1.2em;
+    font-size: 16px;
+    font-weight: 200;
+    color: $background-color;
+  }
+}
+
+.about__button {
+  margin-top: auto;
 }
