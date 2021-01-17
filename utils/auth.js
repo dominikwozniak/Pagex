@@ -89,7 +89,6 @@ export const refreshToken = async () => {
 
     if (tokenParts.exp > now) {
       try {
-        console.log(refreshToken, '<<< TOKEN');
         const { data } = await axios.post(`${API_URL}/user/token/refresh/`, {
           refresh: refreshToken,
         });
