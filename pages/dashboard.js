@@ -193,7 +193,7 @@ export default function Dashboard() {
         {user && userInfo && (
           <div className={styles.dashboard__wrapper}>
             <div className={styles.dashboard__companyCard}>
-              <StyledAvatar style={{ height: '120px', width: '120px' }}>{user[1].toUpperCase()} </StyledAvatar>
+              <StyledAvatar style={{ height: '120px', width: '120px' }}>{email && email[0].toUpperCase()} </StyledAvatar>
               <ProfileDetails>
                 <Center>
                   <DataParagraph>{firstName} {lastName}</DataParagraph>
@@ -232,8 +232,8 @@ export default function Dashboard() {
               </ProfileDetails>
               <Tooltip title="Edit your profile" placement="top">
                 <EditDiv>
-                  <IconButton onClick={handleOpen}>
-                    <FaRegEdit size="20px"  />
+                  <IconButton>
+                    <FaRegEdit size="20px" onClick={handleOpen} />
                   </IconButton>
                 </EditDiv>
               </Tooltip>
