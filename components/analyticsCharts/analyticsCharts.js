@@ -12,7 +12,7 @@ const AnalyticsCharts = () => {
   const [viewsData, setViewsData] = useState([]);
   const [groupedByCity, setGroupedByCity] = useState([]);
 
-  let xData = ['Day', 'Day', 'Day', 'Day', 'Day', 'Day', 'Day', 'Day', 'Day', 'Day'];
+  let xData = ['10', '9', '8', '7', '6', '5', '4', '3', '2', 'Today'];
   let yData = [];
 
   let data = {
@@ -65,12 +65,12 @@ const AnalyticsCharts = () => {
         console.error(e);
       }
     }
-  }, [])
+  }, []);
 
   const options = {
     title: {
       display: true,
-      text: `Amout of`,
+      text: `The number of your page views`,
     },
     legend: {
       display: false,
@@ -86,7 +86,6 @@ const AnalyticsCharts = () => {
   return (
     <div className={styles.analyticsCharts__container}>
       <div className={styles.analyticsCharts__wrapper}>
-        {console.log(data)}
         <Line data={data} width={600} height={300} options={options} />
       </div>
     </div>
