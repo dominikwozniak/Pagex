@@ -102,7 +102,7 @@ const Page = () => {
             </Button>
           </div>
         </section>
-        <section className={styles.page__header}>
+        <section id="about" className={styles.page__header}>
           <div>
             {pageData.page_type === 'INDUSTRY' && (
               <img src={INDUSTRY_IMAGE2} alt={pageData.page_type} />
@@ -114,14 +114,13 @@ const Page = () => {
               <img src={SERVICES_IMAGE2} alt={pageData.page_type} />
             )}
           </div>
-          <div>
+          <div >
             <h2>About us</h2>
             <h1>{pageData.header_title}</h1>
             <h5>{pageData.header_description}</h5>
             <Button className={styles.page__header__button}>Contact us</Button>
           </div>
         </section>
-
         <div className={styles.footer__wrapper}>
           <div className={styles.footer__logo}>
             <h3>PAGEX</h3>
