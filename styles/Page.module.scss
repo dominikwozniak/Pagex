@@ -36,11 +36,25 @@
   }
 }
 
-.page__header__button {
+.page__header__button, .page__header__button_learn {
   background-color: $blue-accent-hover-color !important;
   color: #fff !important;
   margin-top: 2rem !important;
-  padding: .5rem 1rem !important;
+  padding: .8rem 1.5rem !important;
+}
+
+.page__header__button {
+  &:hover {
+    background-color: rgba(99, 99, 249, 1) !important;
+  }
+}
+
+.page__header__button_learn {
+  margin-left: 1em !important;
+  background-color: #cc5f83 !important;
+  &:hover {
+    background-color: #cc7684 !important;
+  }
 }
 
 .page__services {
@@ -95,36 +109,64 @@
   justify-content: end;
   align-items: center;
 
-  padding: 1em 1em;
+  padding: .8em 1em;
   margin: 1em 3em;
-  max-width: 300px;
+  max-width: 400px;
 
   h2 {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: normal;
     color: $background-color;
     position: relative;
-  }
-  h2:after {
-    position: absolute;
-    content: '';
-    height: 2px;
-    bottom: -6px;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    width: 70%;
-    background: $background-color;
   }
   p {
     text-align: center;
     margin-top: 1.2em;
     font-size: 16px;
     font-weight: 200;
-    color: $background-color;
+    color: #ddd;
   }
 }
 
 .about__button {
-  margin-top: auto;
+  background-color: #fff !important;
+  color: #000 !important;
+  margin-top: 7rem !important;
+  padding: .8rem 1.5rem !important;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #ddd !important;
+  }
+}
+
+.footer__wrapper {
+  @extend .center;
+
+  flex-direction: column;
+  justify-content: start;
+  height: 30vh;
+  width: 100%;
+  padding: 0 2em;
+}
+
+.footer__logo {
+  @extend .center;
+  flex-direction: row;
+  margin-top: 4em;
+  h3 {
+    color: #5108d4;
+  }
+}
+
+.footer__link {
+  flex-direction: row;
+  margin-top: 1em;
+  a {
+    color: #5108d4;
+    transition: all .2s ease;
+  }
+  a:hover {
+    color: #0000b6;
+  }
 }

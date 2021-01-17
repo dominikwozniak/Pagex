@@ -229,14 +229,14 @@
   }
 }
 
-.about__button {
-  @extend .home__button;
+.footer__wrapper_page {
+  @extend .center;
 
-  margin-top: 7rem;
-
-  svg {
-    color: $blue-accent-color;
-  }
+  flex-direction: column;
+  justify-content: start;
+  height: 30vh;
+  width: 100%;
+  padding: 0 2em;
 }
 
 .footer__wrapper {
