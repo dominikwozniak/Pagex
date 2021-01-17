@@ -52,6 +52,7 @@ export const AuthProvider = (props) => {
           },
         });
         setSlug(data.slug)
+        setIsCreated(data.is_created);
       } catch (e) {
         console.error(e);
       }

@@ -5,6 +5,8 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import styles from '../../styles/accordionPanel.module.scss';
 import {
   TextField,
@@ -69,17 +71,19 @@ const AccordionPanel = () => {
   const [openSelect, setOpenSelect] = useState(false);
   const [servicesPage, setServicesPage] = useState(0);
 
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo, setSlug, setIsCreated, isCreated } = useContext(AuthContext);
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, isError] = useState(false);
-  const [isCreated, setIsCreated] = useState(false);
+  // const [isCreated, setIsCreated] = useState(false);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [pageType, setPageType] = useState('ENGINEERING');
   const [headerTitle, setHeaderTitle] = useState('');
   const [headerDescription, setHeaderDescription] = useState('');
+  const [servicesTitle, setServicesTitle] = useState('')
+  const [servicesDescription, setServicesDescription] = useState('')
   const [seviceFirstName, setSeviceFirstName] = useState('');
   const [seviceFirstDescription, setSeviceFirstDescription] = useState('');
   const [seviceSecondName, setSeviceSecondName] = useState('');
@@ -89,6 +93,17 @@ const AccordionPanel = () => {
   const [aboutTitle, setAboutTitle] = useState('');
   const [aboutSubtitle, setAboutSubtitle] = useState('');
   const [aboutDescription, setAboutDescription] = useState('');
+
+  const [servicesEnable, setServicesEnable] = useState(true);
+  const [aboutEnable, setAboutEnable] = useState(true);
+
+  const toggleServicesChecked = () => {
+    setServicesEnable((prev) => !prev);
+  };
+
+  const toggleAboutChecked = () => {
+    setAboutEnable((prev) => !prev);
+  };
 
   const handleServicesPageChange = (event, newValue) => {
     setServicesPage(newValue);
@@ -120,6 +135,8 @@ const AccordionPanel = () => {
 
         setHeaderTitle(data.header_title);
         setHeaderDescription(data.header_description);
+        setServicesTitle(data.services_title)
+        setServicesDescription(data.services_description);
         setSeviceFirstName(data.services_1_title);
         setSeviceFirstDescription(data.services_1_description);
         setSeviceSecondName(data.services_2_title);
@@ -130,6 +147,8 @@ const AccordionPanel = () => {
         setAboutSubtitle(data.about_subtitle);
         setAboutDescription(data.about_description);
         setIsCreated(data.is_created);
+        setServicesEnable(data.services_enable);
+        setAboutEnable(data.about_enable);
 
         setIsCreated(data.is_created);
         setIsLoading(false);
@@ -138,12 +157,6 @@ const AccordionPanel = () => {
       }
     }
   }, [userInfo]);
-
-  // useEffect(() => {
-  //   if (email) {
-  //       setEmail(userInfo.email);
-  //   }
-  // }, [setEmail]);
 
   const handleSelectChange = (event) => {
     setPageType(event.target.value);
@@ -172,8 +185,8 @@ const AccordionPanel = () => {
       contact_email: email,
       header_title: headerTitle,
       header_description: headerDescription,
-      // services_title: ServicesTitle,
-      // services_description: "service descr",
+      services_title: servicesTitle,
+      services_description: servicesDescription,
       services_1_title: seviceFirstName,
       services_1_description: seviceFirstDescription,
       services_2_title: seviceSecondName,
@@ -183,11 +196,13 @@ const AccordionPanel = () => {
       about_title: aboutTitle,
       about_subtitle: aboutSubtitle,
       about_description: aboutDescription,
+      services_enable: servicesEnable,
+      about_enable: aboutEnable
     };
 
     if (accessToken) {
       try {
-        const res = await axios.post(`${API_URL}/pages/`, newData, {
+        const { data } = await axios.post(`${API_URL}/pages/`, newData, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-type': 'Application/json',
@@ -195,10 +210,7 @@ const AccordionPanel = () => {
         });
 
         setIsCreated(true);
-
-        if (res.status !== 200) {
-          console.log('jest ok');
-        }
+        setSlug(data.slug);
       } catch (e) {
         console.error(e);
       }
@@ -343,6 +355,34 @@ const AccordionPanel = () => {
               {/*</Typography>*/}
             </AccordionSummary>
             <AccordionDetails>
+
+              <div>
+                <div>
+                  <TextField
+                    type="text"
+                    value={servicesTitle}
+                    onChange={(e) => setServicesTitle(e.target.value)}
+                    className={styles.accordionPanel__input}
+                    label="Services title"
+                    name="web-name"
+                    id="web-name"
+                    placeholder="Name"
+                  />
+                </div>
+                <div>
+                  <TextField
+                    type="text"
+                    value={servicesDescription}
+                    onChange={(e) => setServicesDescription(e.target.value)}
+                    className={styles.accordionPanel__input}
+                    label="Services description"
+                    name="web-name"
+                    id="web-name"
+                    placeholder="Name"
+                  />
+                </div>
+              </div>
+
               <Tabs
                 orientation="vertical"
                 variant="scrollable"
@@ -486,6 +526,42 @@ const AccordionPanel = () => {
                     name="web-name"
                     id="web-name"
                     placeholder="Name"
+                  />
+                </div>
+              </div>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === 'panel5'}
+            onChange={handleChange('panel5')}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1bh-content"
+              id="panel1bh-header"
+            >
+              <Typography className={classes.heading}>Settings</Typography>
+              {/*<Typography className={classes.secondaryHeading}>I am an accordion</Typography>*/}
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className={styles.accordionPanel__detailsWrapper}>
+                {/*<Typography>*/}
+                {/*  In this section you can change main information about your page.*/}
+                {/*</Typography>*/}
+                <div>
+                  <FormControlLabel
+                    control={<Switch color="primary" />}
+                    label="Services section visible"
+                    checked={servicesEnable}
+                    onChange={toggleServicesChecked}
+                  />
+                </div>
+                <div>
+                  <FormControlLabel
+                    control={<Switch color="primary" />}
+                    label="About section visible"
+                    checked={aboutEnable}
+                    onChange={toggleAboutChecked}
                   />
                 </div>
               </div>
