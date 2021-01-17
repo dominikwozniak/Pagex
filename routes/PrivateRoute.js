@@ -13,17 +13,17 @@ const PrivateRoute = ({ children }) => {
   }, []);
 
   if (!isLoggedIn()) {
-    return (
-      <div className={styles.route__container}>
-        <CircularProgress className={styles.route__loading} />
-      </div>
-    );
+    return null
+      // <div className={styles.route__container}>
+      //   <CircularProgress className={styles.route__loading} />
+      // </div>
+
+    ;
   } else {
     return (
-      <>
-        {/*<Navbar />*/}
+      <div className={styles.route}>
         {children}
-      </>
+      </div>
     );
   }
 };
