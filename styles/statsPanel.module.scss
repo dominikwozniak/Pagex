@@ -29,6 +29,11 @@
   height: 125px;
   border-radius: 50%;
   background-color: $background-gray;
+  transition: background-color .2s ease-out;
+
+  &:hover {
+    background-color: #d3d3d3;
+  }
 }
 
 .statsCircular__wrapper {
