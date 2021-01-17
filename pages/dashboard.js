@@ -210,7 +210,7 @@ export default function Dashboard() {
                   <Link rel="stylesheet" href={`page/${slug}`}>
                   <Button
                     variant="contained"
-                    color="secondary"
+                    color="primary"
                     startIcon={<FindInPageIcon />}
                   >
                     View your page
