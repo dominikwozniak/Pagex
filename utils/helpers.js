@@ -14,3 +14,12 @@ export const LOGO_WHITE_URL =
 
 export const LOGO_WITH_NAME_URL =
   'https://ids-storage-football-prediction.s3-eu-west-1.amazonaws.com/imgs/logo4.png';
+
+export const INDUSTRY_IMAGE =
+  'https://ids-storage-football-prediction.s3-eu-west-1.amazonaws.com/imgs/industry.png';
+
+export const SERVICES_IMAGE =
+  'https://ids-storage-football-prediction.s3-eu-west-1.amazonaws.com/imgs/services.png';
+
+export const ENGINEERING_IMAGE =
+  'https://ids-storage-football-prediction.s3-eu-west-1.amazonaws.com/imgs/engineering.png';
