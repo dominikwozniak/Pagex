@@ -29,7 +29,6 @@ const StatsPanel = () => {
         setTotalViews(data.view_count);
         setMonthlyViews(data.month_views_count);
         setWeeklyViews(data.week_views_count);
-        console.log(data, '<< analytics')
       } catch (e) {
         console.error(e);
       }
