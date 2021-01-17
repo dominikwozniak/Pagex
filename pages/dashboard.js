@@ -232,8 +232,8 @@ export default function Dashboard() {
               </ProfileDetails>
               <Tooltip title="Edit your profile" placement="top">
                 <EditDiv>
-                  <IconButton>
-                    <FaRegEdit size="20px" onClick={handleOpen} />
+                  <IconButton onClick={handleOpen}>
+                    <FaRegEdit size="20px"  />
                   </IconButton>
                 </EditDiv>
               </Tooltip>
