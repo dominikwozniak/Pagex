@@ -28,6 +28,7 @@ import { API_URL } from '../utils/helpers';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import Link from 'next/link';
+import FindInPageIcon from '@material-ui/icons/FindInPage';
 
 const StyledAvatar = styled(Avatar)`
   margin-top: 25%;
@@ -56,8 +57,8 @@ const Center = styled.div`
 `;
 const LogOutDiv = styled.div`
   position: absolute;
-  left: 10px;
-  top: 10px;
+  right: 100px;
+  bottom: 15px;
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -65,13 +66,13 @@ const LogOutDiv = styled.div`
 const EditDiv = styled.div`
   position: absolute;
   bottom: 10px;
-  left: 10px;
+  right: 50px;
   cursor: pointer;
 `;
 const Analytics = styled.div`
 position: absolute;
-right: 0;
-bottom: 0;
+right: 10px;
+bottom: 9px;
 `
 export default function Dashboard() {
   const { user, userInfo, slug } = useContext(AuthContext);
@@ -206,6 +207,15 @@ export default function Dashboard() {
                     {firstName} {lastName}
                   </DataParagraph>
                   <DataParagraph>{email}</DataParagraph>
+                  <Link rel="stylesheet" href={`page/${slug}`}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    startIcon={<FindInPageIcon />}
+                  >
+                    View your page
+                  </Button>
+                  </Link>
                 </Center>
                 <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
                   <DialogTitle style={{textAlign: "center"}}>EDIT YOUR PROFILE</DialogTitle>
@@ -294,8 +304,8 @@ export default function Dashboard() {
               </ProfileDetails>
               <Tooltip title="Edit your profile" placement="top">
                 <EditDiv>
-                  <IconButton>
-                    <FaRegEdit size="20px" onClick={handleOpen} />
+                  <IconButton onClick={handleOpen} >
+                    <FaRegEdit size="20px" />
                   </IconButton>
                 </EditDiv>
               </Tooltip>
