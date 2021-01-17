@@ -90,22 +90,13 @@ const Index = () => {
             </p>
           </div>
         </div>
-        {isLoggedIn() ? (
-          <div>
-            <div></div>
-            <div className={styles.about__button}>
-              <AnchorLink className={styles.home__button} href="#services">
-                <IconButton>
-                  <ArrowDropDownCircleOutlinedIcon />
-                </IconButton>
-              </AnchorLink>
-            </div>
-          </div>
-        ) : (
-          <div className={styles.home__action} style={{ marginBottom: '4em' }}>
-            <ActionButton content="Try it yourself" path="register" />
-          </div>
-        )}
+        <div className={styles.about__button}>
+          <AnchorLink className={styles.home__button_dark} href="#services">
+            <IconButton>
+              <ArrowDropDownCircleOutlinedIcon />
+            </IconButton>
+          </AnchorLink>
+        </div>
       </div>
       <div id="services" className={styles.services__wrapper}>
         <h3>Our services</h3>

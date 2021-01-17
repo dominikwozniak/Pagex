@@ -109,6 +109,16 @@
   }
 }
 
+.home__button_dark {
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #9543d4;
+  }
+}
+
+.about__button {}
+
 .services__wrapper {
   @extend .center;
   @extend .background-gradient;

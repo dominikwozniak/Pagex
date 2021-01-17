@@ -3,14 +3,11 @@
 
 .analytics__container {
   @extend .background-gradient;
-
   width: 100%;
-  height: 100vh;
 }
 
 .analyticsCharts__container {
   width: 100%;
-  height: 600px;
   padding: 5rem;
 }
 
@@ -18,8 +15,7 @@
   @extend .box-shadow;
 
   width: 100%;
-  height: 100%;
   padding: 3rem;
   background-color: $background-color;
-  border-radius: 1rem;
+  border-radius: .5rem;
 }
