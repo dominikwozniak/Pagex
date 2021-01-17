@@ -7,9 +7,6 @@ import AuthContext from '../../context/AuthContext'
 import { isLoggedIn } from '../../utils/auth';
 
 const Navbar = () => {
-
-const {user} = useContext(AuthContext)
-
   return (
     <nav className={styles.navbar__wrapper}>
       <Link href="/">
@@ -19,13 +16,9 @@ const {user} = useContext(AuthContext)
               src="https://ids-storage-football-prediction.s3-eu-west-1.amazonaws.com/imgs/logo2.png"
               alt="pagexlogo"
             />
-            <h3>PAGEX</h3>
           </div>
         </a>
       </Link>
-      <div>
-      {user && <LogoutButton/>}
-      </div>
     </nav>
   );
 };
