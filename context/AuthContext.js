@@ -9,6 +9,8 @@ const AuthContext = createContext();
 export const AuthProvider = (props) => {
   const [user, setUser] = useState('');
   const [userInfo, setUserInfo] = useState({});
+  const [slug, setSlug] = useState('');
+  const [isCreated, setIsCreated] = useState(false);
 
   useEffect(() => {
     const storedEmail = getLocalStorageEmail()
@@ -36,8 +38,28 @@ export const AuthProvider = (props) => {
     }
   }, [user])
 
+  useEffect(async () => {
+    await refreshToken();
+
+    const accessToken = getLocalStorageToken();
+
+    if (accessToken) {
+      try {
+        const { data } = await axios.get(`${API_URL}/pages/`, {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-type': 'Application/json',
+          },
+        });
+        setSlug(data.slug)
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, [user])
+
   return (
-    <AuthContext.Provider value={{ user, setUser, userInfo }}>
+    <AuthContext.Provider value={{ user, setUser, userInfo, slug, setSlug, isCreated, setIsCreated }}>
       {props.children}
     </AuthContext.Provider>
   );

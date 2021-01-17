@@ -74,7 +74,7 @@ right: 0;
 bottom: 0;
 `
 export default function Dashboard() {
-  const { user, userInfo } = useContext(AuthContext);
+  const { user, userInfo, slug } = useContext(AuthContext);
   const notify = () => {
     toast('Loggin Notification !');
     toast.success('Logged succesfuly', {
@@ -98,7 +98,6 @@ export default function Dashboard() {
   const [emailEdit, setEmailEdit] = useState('');
   const [addressEdit, setAddressEdit] = useState('');
   const [phoneEdit, setPhoneEdit] = useState('');
-  const [slug, setSlug] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -309,9 +308,11 @@ export default function Dashboard() {
               </Tooltip>
               <Tooltip title="Analytics" placement="top">
                 <Analytics>
-                  <IconButton>
-                    <EqualizerIcon size="20px" />
-                  </IconButton>
+                  <Link rel="stylesheet" href="/analytics">
+                    <IconButton>
+                      <EqualizerIcon size="20px" />
+                    </IconButton>
+                  </Link>
                 </Analytics>
               </Tooltip>
             </div>
