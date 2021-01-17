@@ -90,7 +90,8 @@
   display: flex;
   margin-top: 10px;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-around;
 
   p {
     margin-right: 4px;
@@ -98,6 +99,14 @@
     color: #fff;
   }
 
+}
+
+.home__button {
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: $background-color;
+  }
 }
 
 .services__wrapper {
@@ -198,6 +207,7 @@
     font-weight: normal;
     color: #9621d4;
     position: relative;
+    margin-top: 1rem;
   }
   h2:after {
     position: absolute;
@@ -216,6 +226,16 @@
     font-size: 16px;
     font-weight: 200;
     color: #292928;
+  }
+}
+
+.about__button {
+  @extend .home__button;
+
+  margin-top: 7rem;
+
+  svg {
+    color: $blue-accent-color;
   }
 }
 
