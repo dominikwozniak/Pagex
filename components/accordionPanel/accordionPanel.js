@@ -256,7 +256,7 @@ const AccordionPanel = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className={styles.accordionPanel__input}
-                      label="website name"
+                      label="Page title"
                       name="web-name"
                       id="web-name"
                       placeholder="Name"
@@ -268,7 +268,7 @@ const AccordionPanel = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className={styles.accordionPanel__input}
-                      label="company email"
+                      label="Company email"
                       name="web-name"
                       id="web-name"
                       placeholder="Name"
@@ -318,7 +318,7 @@ const AccordionPanel = () => {
                       value={headerTitle}
                       onChange={(e) => setHeaderTitle(e.target.value)}
                       className={styles.accordionPanel__input}
-                      label="website name"
+                      label="Header section title"
                       name="web-name"
                       id="web-name"
                       placeholder="Name"
@@ -330,7 +330,7 @@ const AccordionPanel = () => {
                       value={headerDescription}
                       onChange={(e) => setHeaderDescription(e.target.value)}
                       className={styles.accordionPanel__input}
-                      label="website name"
+                      label="Header section description"
                       name="web-name"
                       id="web-name"
                       placeholder="Name"
@@ -498,7 +498,7 @@ const AccordionPanel = () => {
                     value={aboutTitle}
                     onChange={(e) => setAboutTitle(e.target.value)}
                     className={styles.accordionPanel__input}
-                    label="website name"
+                    label="About section title"
                     name="web-name"
                     id="web-name"
                     placeholder="Name"
@@ -510,7 +510,7 @@ const AccordionPanel = () => {
                     value={aboutSubtitle}
                     onChange={(e) => setAboutSubtitle(e.target.value)}
                     className={styles.accordionPanel__input}
-                    label="website name"
+                    label="About section subtitle"
                     name="web-name"
                     id="web-name"
                     placeholder="Name"
@@ -522,7 +522,7 @@ const AccordionPanel = () => {
                     value={aboutDescription}
                     onChange={(e) => setAboutDescription(e.target.value)}
                     className={styles.accordionPanel__input}
-                    label="website name"
+                    label="About section description"
                     name="web-name"
                     id="web-name"
                     placeholder="Name"
