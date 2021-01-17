@@ -5,11 +5,16 @@ import AuthContext from '../context/AuthContext';
 import Avatar from '@material-ui/core/Avatar';
 import styled from 'styled-components';
 import AccordionPanel from '../components/accordionPanel/accordionPanel';
+import StatsPanel from '../components/statsPanel/statsPanel';
+import LogoutButton from '../components/logoutButton/logoutButton';
+import { isLoggedIn } from '../utils/auth';
 import { getLocalStorageToken, logout } from '../utils/auth';
 import { BiLogOut } from 'react-icons/bi';
 import { FaRegEdit } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import PrivateRoute from '../routes/PrivateRoute';
+import { toast } from 'react-toastify';
+import { IconButton } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -20,6 +25,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import SaveIcon from '@material-ui/icons/Save';
 import axios from 'axios';
 import { API_URL } from '../utils/helpers';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const StyledAvatar = styled(Avatar)`
   margin-top: 25%;
@@ -41,11 +47,13 @@ height: 50vh;
 const DataParagraph = styled.p`
 margin: 8%;
 font-size: 28px;
-
+&:nth-child(2){
+font-size: 24px;
+}
 `;
 const Center = styled.div`
 text-align: center;
-`
+`;
 const LogOutDiv = styled.div`
 position: absolute;
 left: 10px;
@@ -62,6 +70,16 @@ cursor: pointer;
 `;
 export default function Dashboard() {
   const { user, userInfo } = useContext(AuthContext);
+  const notify = () => {
+    toast('Loggin Notification !');
+    toast.success('Logged succesfuly', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+
+    toast.error('Failed to loggin', {
+      position: toast.POSITION.TOP_LEFT,
+    });
+  };
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [company, setCompany] = useState('');
@@ -171,6 +189,7 @@ export default function Dashboard() {
           <meta name="home page" content="home page" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
         {user && userInfo && (
           <div className={styles.dashboard__wrapper}>
             <div className={styles.dashboard__companyCard}>
@@ -213,17 +232,25 @@ export default function Dashboard() {
               </ProfileDetails>
               <Tooltip title="Edit your profile" placement="top">
                 <EditDiv>
-                  <FaRegEdit size="35px" onClick={handleOpen} />
+                  <IconButton>
+                    <FaRegEdit size="20px" onClick={handleOpen} />
+                  </IconButton>
                 </EditDiv>
               </Tooltip>
               <Tooltip title="Log out" placement="top">
                 <LogOutDiv>
-                  <BiLogOut size="lg" onClick={handleLogOut} />
+                  <IconButton onClick={handleLogOut}>
+                    <ExitToAppIcon size="lg" />
+                  </IconButton>
                 </LogOutDiv>
               </Tooltip>
             </div>
             <div className={styles.dashboard__optionsCard}>
+              <StatsPanel />
               <AccordionPanel />
+            </div>
+            <div>
+              {notify}
             </div>
           </div>
         )}

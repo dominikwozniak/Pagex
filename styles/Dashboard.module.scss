@@ -18,10 +18,11 @@
 }
 
 .dashboard__companyCard {
+  @extend .box-shadow;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 25%;
   height: 100vh;
   //flex-basis: max-content;
   padding: 2rem;
