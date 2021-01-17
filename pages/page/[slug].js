@@ -7,10 +7,14 @@ import {
   INDUSTRY_IMAGE,
   ENGINEERING_IMAGE,
   SERVICES_IMAGE,
+  INDUSTRY_IMAGE2,
+  ENGINEERING_IMAGE2,
+  SERVICES_IMAGE2,
 } from '../../utils/helpers';
 import { Button } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import Link from 'next/link';
 
 const Page = () => {
   const router = useRouter();
@@ -38,7 +42,7 @@ const Page = () => {
             <h1>{pageData.header_title}</h1>
             <h5>{pageData.header_description}</h5>
             <Button className={styles.page__header__button}>Contact!</Button>
-            <Button>
+            <Button className={styles.page__header__button_learn}>
               <AnchorLink href="#services">Learn more</AnchorLink>
             </Button>
           </div>
@@ -98,11 +102,47 @@ const Page = () => {
             </Button>
           </div>
         </section>
-        <section id="about" className={styles.page__about}>
-          {pageData.about_title && <h2>{pageData.about_title}</h2>}
-          {pageData.about_subtitle && <h5>{pageData.about_subtitle}</h5>}
-          {pageData.about_description && <p>{pageData.about_description}</p>}
+        <section className={styles.page__header}>
+          <div>
+            {pageData.page_type === 'INDUSTRY' && (
+              <img src={INDUSTRY_IMAGE2} alt={pageData.page_type} />
+            )}
+            {pageData.page_type === 'ENGINEERING' && (
+              <img src={ENGINEERING_IMAGE2} alt={pageData.page_type} />
+            )}
+            {pageData.page_type === 'SERVICES' && (
+              <img src={SERVICES_IMAGE2} alt={pageData.page_type} />
+            )}
+          </div>
+          <div>
+            <h2>About us</h2>
+            <h1>{pageData.header_title}</h1>
+            <h5>{pageData.header_description}</h5>
+            <Button className={styles.page__header__button}>Contact us</Button>
+          </div>
         </section>
+
+        <div className={styles.footer__wrapper}>
+          <div className={styles.footer__logo}>
+            <h3>PAGEX</h3>
+            <img
+              src="https://ids-storage-football-prediction.s3-eu-west-1.amazonaws.com/imgs/logo2.png"
+              alt="pagexlogo" style={{width: '50px'}}
+            />
+          </div>
+          <p style={{color: '#292928'}}>
+            PAGEX is the comprehensive system to support your business among amateurs and professionals.
+          </p>
+          <div className={styles.footer__link}>
+            <a style={{marginRight: '3em'}} href="mailto:noteneo.project@gmail.com">Contact</a>
+            <Link href="/login/">
+              <a style={{marginRight: '3em'}}>Login</a>
+            </Link>
+            <Link href="/register/">
+              <a style={{marginRight: '3em'}}>Sign Up</a>
+            </Link>
+          </div>
+        </div>
       </div>
     </PrivateRoute>
   );

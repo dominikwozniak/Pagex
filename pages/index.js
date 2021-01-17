@@ -123,7 +123,7 @@ const Index = () => {
           )}
         </div>
       </div>
-      <div className={styles.footer__wrapper}>
+      <div className={styles.footer__wrapper_page}>
         <div className={styles.footer__logo}>
           <h3>PAGEX</h3>
           <img
