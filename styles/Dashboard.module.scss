@@ -19,6 +19,7 @@
 
 .dashboard__companyCard {
   @extend .box-shadow;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
