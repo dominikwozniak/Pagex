@@ -13,7 +13,7 @@ Pagex is is a complete web app for creating static landing pages  :cyclone:
 * `SCSS`
 * `Axios`
 * `Styled Components`
-* `JWT token authentication`
+* `JWT authentication`
 
 ## Screenshots
 
