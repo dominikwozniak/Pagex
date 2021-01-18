@@ -3,7 +3,7 @@
 ![npm](https://img.shields.io/npm/v/npm)
 ![GitHub last commit](https://img.shields.io/github/last-commit/dominikwozniak/Pagex-nextjs)
 
-Pagex is is a complete web app for creating static landing pages  :cyclone: 
+Pagex is a complete web app for creating static landing pages  :cyclone: 
 
 ## Technologies
 
