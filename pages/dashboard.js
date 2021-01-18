@@ -75,7 +75,7 @@ right: 10px;
 bottom: 9px;
 `
 export default function Dashboard() {
-  const { user, userInfo, slug } = useContext(AuthContext);
+  const { user, userInfo, slug, isCreated } = useContext(AuthContext);
   const notify = () => {
     toast('Loggin Notification !');
     toast.success('Logged succesfuly', {
@@ -212,6 +212,7 @@ export default function Dashboard() {
                     variant="contained"
                     color="primary"
                     startIcon={<FindInPageIcon />}
+                    disabled={!isCreated}
                   >
                     View your page
                   </Button>

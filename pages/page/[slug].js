@@ -15,6 +15,7 @@ import { Button } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const Page = () => {
   const router = useRouter();
@@ -35,6 +36,11 @@ const Page = () => {
   return (
     <PrivateRoute>
       <div className={styles.page__container}>
+        <Head>
+          <title>page | PAGEX</title>
+          <meta name="home page" content="home page" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <section className={styles.page__header}>
           <div>
             <h1>{pageData.header_title}</h1>

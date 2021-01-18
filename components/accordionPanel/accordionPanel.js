@@ -146,7 +146,7 @@ const AccordionPanel = () => {
         setAboutTitle(data.about_title);
         setAboutSubtitle(data.about_subtitle);
         setAboutDescription(data.about_description);
-        setIsCreated(data.is_created);
+        // setIsCreated(data.is_created);
         setServicesEnable(data.services_enable);
         setAboutEnable(data.about_enable);
 
